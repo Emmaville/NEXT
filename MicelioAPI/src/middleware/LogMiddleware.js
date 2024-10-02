@@ -5,6 +5,9 @@ function LogMiddleware(request, response, next) {
 
     console.log(data);
 
+    console.log('Request Headers:', request.headers);
+    console.log('Request Body:', request.body);
+
     next();
 
 }

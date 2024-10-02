@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser')
 const Routes = require('./routes/routes');
 const cors = require('cors');
 
+const knex = require('./database/connection');
+
+
 if(   !process.env.HTTP_PORT
   ||  !process.env.JWT_SECRET
   ||  !process.env.DATABASE_HOST
@@ -24,11 +27,38 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({credentials: true, origin: true}));
 
-const baseDir = path.join(__dirname, '..', '..', 'MicelioDashboard', 'build')
-app.use(express.static(`${baseDir}`))
+const baseDir = path.join(__dirname, '..', '..', 'MicelioDashboardNext', 'build',  );
+app.use(express.static(`${baseDir}`));
+
+
+
+
+
+
+
+// Logging middleware for debugging
+/*app.use((req, res, next) => {
+  console.log(`Received ${req.method} request for ${req.url}`);
+  console.log('Request Body:', req.body);
+  next();
+});
+*/
+
+
+
+
+
+
 app.use('/api', Routes);
-app.get('*', (req,res) => res.sendFile('index.html' , { root : baseDir }))
+app.get('*', (req,res) => res.sendFile('index.html' , { root : baseDir }));
+
+const PORT = process.env.HTTP_PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 
 
-app.listen(process.env.HTTP_PORT);
+
+//app.listen(process.env.HTTP_PORT)
+

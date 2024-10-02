@@ -1,5 +1,5 @@
 {
-  "name": "MicelioAPI",
+  "name": "micelioapi",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,15 +17,20 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "cookie-parser": "^1.4.5",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "dotenv": "^8.6.0",
+    "express": "^4.19.2",
+    "http-proxy-middleware": "^3.0.0",
     "jinq": "^1.6.1",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.4",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "next": "^12.0.7",
     "pg": "^8.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },
@@ -33,6 +38,7 @@
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.11",
     "@types/jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.7"
+    "@types/node": "^20.14.6",
+    "nodemon": "^2.0.22"
   }
 }

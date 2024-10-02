@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Box, Button, Flex, Heading, Input, Text } from '@chakra-ui/react';
 import Link from 'next/link';
 import Api from '../../services/Api';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from  'react-toastify';
 import { AuthContext } from '../../context/AuthContext';
 
 export default function LoginPage() {
@@ -24,7 +24,7 @@ export default function LoginPage() {
 
     try {
       const response = await Api.post('/user/login', { username, password });
-
+      console.log('Login response:', response.data);
       setUser(response.data.data);
 
       await router.push('/home');

@@ -7,6 +7,7 @@ class UserController {
 
   async get(request, response) {
     const {miceliotoken} = request.cookies
+    console.log('Cookies:', request.cookies);
     console.log(miceliotoken)
 
     if (!miceliotoken) {
@@ -15,8 +16,11 @@ class UserController {
 
     try {
       const {sub: userId} = decodeUserSession(miceliotoken)
+      console.log('UserID from token:', userId); 
 
       const user_db = await knex('MicelioUser').select().where({user_id: userId}).first()
+      console.log('User from DB:', user_db);
+
       delete user_db.password
 
       response.json({ok: true, data: user_db})
@@ -93,6 +97,7 @@ class UserController {
       }
 
     } catch (err) {
+      console.log(err)
       return response.status(400).json({error: 'Cannot connect to database, try again later'});
     }
 
@@ -151,6 +156,11 @@ class UserController {
     const token = generateUserSession(user_db.user_id);
 
     response.cookie('miceliotoken', token);
+   /* response.cookie('miceliotoken', token, {
+      httpOnly: true,
+      sameSite: 'None', // Adjust as needed
+      secure: true    // Should be true if you're using HTTPS
+   }); */
     response.json({ok: true, data: user_db, token});
   }
 

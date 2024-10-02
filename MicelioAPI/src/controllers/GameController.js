@@ -16,7 +16,8 @@ class GameController{
     const decodedToken = decodeUserSession(userToken);
 
     const user_id = decodedToken.sub;
-
+    
+    
 
     const game = await knex('Game as g')
       .select('g.token', 'g.name', 'g.version', 'hp.user_id', 'hp.owner', 'mu.username', 'hp.has_permission_id')

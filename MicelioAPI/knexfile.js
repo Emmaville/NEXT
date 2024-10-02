@@ -16,5 +16,20 @@ module.exports = {
     // seeds: {
     //     directory: path.resolve(__dirname, 'src', 'database', 'seeds')
     // },
+
+
+
     useNullAsDefault: true
 }; 
+
+
+// Log the configuration
+/*console.log('Connecting to MySQL with the following settings:');
+console.log({
+    client: config.client,
+    host: config.connection.host,
+    user: config.connection.user,
+    database: config.connection.database
+});
+
+module.exports = config; */
